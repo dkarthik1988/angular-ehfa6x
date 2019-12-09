@@ -1,0 +1,55 @@
+<label>
+  Name:
+  <input type="text" [formControl]="name" />
+</label>
+
+<p>
+	Value : {{name.value}}
+</p>
+
+<div>
+	<form [formGroup]="addContactForm" (ngSubmit)="onSubmit()">
+
+		<div class="row">
+			<div class="col-sm-12">
+				<label>
+          Contact Description
+          <input type="text" formControlName="contactDescription" />
+        </label>
+			</div>
+			<div class="col-sm-12">
+				<label>
+          First Name
+          <input type="text" formControlName="firstName" />
+        </label>
+			</div>
+
+			<div class="col-sm-12">
+				<button type="button btn" (click)="addContactEmail()" >Add Email</button>
+			</div>
+
+      <div class="col-sm-12">
+        <div formArraryName="contactEmails" *ngFor="let e of addContactForm.get('contactEmails').controls; let i= index" >
+
+          <div class="form-group">
+            <label>
+              Email:
+              <input type="text" formControlName="email" [id]="'email' + i" />
+            </label>
+          </div>
+
+        </div>
+      </div>
+
+			<div class="col-sm-12">
+
+			</div>
+
+			<div class="col-sm-12">
+				<button type="submit btn" >Submit</button>
+			</div>
+
+		</div>
+
+	</form>
+</div>
